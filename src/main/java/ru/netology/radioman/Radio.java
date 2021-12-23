@@ -2,9 +2,9 @@ package ru.netology.radioman;
 
 public class Radio {
 
-    public int currentStation;
+    private int currentStation;
 
-    public int currentVolume;
+    private int currentVolume;
 
     private int getMinStation() {
 
@@ -27,10 +27,12 @@ public class Radio {
     }
 
     public int getCurrentStation() {
+
         return currentStation;
     }
 
     public int getCurrentVolume() {
+
         return currentVolume;
     }
 
@@ -46,70 +48,32 @@ public class Radio {
         }
 
         if (newCurrentStation == getMinStation()) {
-            currentStation = newCurrentStation;
+            currentStation = getMinStation();
         }
         if (newCurrentStation == getMaxStation()) {
             currentStation = getMaxStation();
         }
     }
 
-    public void setButtonNextStation(int newCurrentStation) {
-        if (newCurrentStation < getMaxStation()) {
-            currentStation = newCurrentStation + 1;
-        }
-        if (newCurrentStation > getMaxStation()) {
-            currentStation = getMinStation();
-        }
-        if (newCurrentStation < getMinStation()) {
-            currentStation = getMinStation();
-        }
-        if (newCurrentStation == getMinStation()) {
-            currentStation = getMinStation() + 1;
-        }
-        if (newCurrentStation == getMaxStation()) {
+    public void buttonNextStation() {
+        int newStation = currentStation + 1;
+        currentStation = newStation;
+        if (newStation > getMaxStation()) {
             currentStation = getMinStation();
         }
     }
 
-    public void setButtonPrevStation(int newCurrentStation) {
-        if (newCurrentStation < getMaxStation()) {
-            currentStation = newCurrentStation - 1;
-        }
-        if (newCurrentStation > getMaxStation()) {
+    public void buttonPrevStation() {
+        int newStation = currentStation - 1;
+        currentStation = newStation;
+        if (newStation < getMinStation()) {
             currentStation = getMaxStation();
-        }
-        if (newCurrentStation < getMinStation()) {
-            currentStation = getMaxStation();
-        }
-        if (newCurrentStation == getMinStation()) {
-            currentStation = getMaxStation();
-        }
-        if (newCurrentStation == getMaxStation()) {
-            currentStation = getMaxStation() - 1;
         }
     }
 
-    public void setButtonIncreaseTheVolume(int newCurrentVolume) {
+    public void setManualInstalationVolume(int newCurrentVolume) {
         if (newCurrentVolume < getMaxVolume()) {
-            currentVolume = newCurrentVolume + 1;
-        }
-        if (newCurrentVolume > getMaxVolume()) {
-            currentVolume = getMaxVolume();
-        }
-        if (newCurrentVolume < getMinVolume()) {
-            currentVolume = getMinVolume();
-        }
-        if (newCurrentVolume == getMinVolume()) {
-            currentVolume = getMinVolume() + 1;
-        }
-        if (newCurrentVolume == getMaxVolume()) {
-            currentVolume = getMaxVolume();
-        }
-    }
-
-    public void setButtonLowerTheVolume(int newCurrentVolume) {
-        if (newCurrentVolume < getMaxVolume()) {
-            currentVolume = newCurrentVolume - 1;
+            currentVolume = newCurrentVolume;
         }
         if (newCurrentVolume > getMaxVolume()) {
             currentVolume = getMaxVolume();
@@ -121,7 +85,23 @@ public class Radio {
             currentVolume = getMinVolume();
         }
         if (newCurrentVolume == getMaxVolume()) {
-            currentVolume = getMaxVolume() - 1;
+            currentVolume = getMaxVolume();
+        }
+    }
+
+    public void buttonIncreaseTheVolume() {
+        int newVolume = currentVolume + 1;
+        currentVolume = newVolume;
+        if (newVolume > getMaxVolume()) {
+            currentVolume = getMaxVolume();
+        }
+    }
+
+    public void buttonLowerTheVolume() {
+        int newVolume = currentVolume - 1;
+        currentVolume = newVolume;
+        if (newVolume < getMinVolume()) {
+            currentVolume = getMinVolume();
         }
     }
 }

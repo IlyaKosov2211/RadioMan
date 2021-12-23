@@ -32,6 +32,7 @@ class RadioTest {
         int expected = 0;
         assertEquals(expected, actual);
     }
+
     @Test
     void setManualInstalationStationMinStation() {
         Radio station = new Radio();
@@ -40,6 +41,7 @@ class RadioTest {
         int expected = 0;
         assertEquals(expected, actual);
     }
+
     @Test
     void setManualInstalationStationMaxStation() {
         Radio station = new Radio();
@@ -50,195 +52,205 @@ class RadioTest {
     }
 
     @Test
-    void ButtonNextStation() {
+    void buttonNextStation() {
         Radio station = new Radio();
-        station.setButtonNextStation(8);
+        station.setManualInstalationStation(8);
+        station.buttonNextStation();
         int actual = station.getCurrentStation();
         int expected = 9;
         assertEquals(expected, actual);
     }
 
     @Test
-    void ButtonNextStationValueAboveTheMaximum() {
+    void buttonNextStationMinStation() {
         Radio station = new Radio();
-        station.setButtonNextStation(15);
-        int actual = station.getCurrentStation();
-        int expected = 0;
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void ButtonNextStationNegativeValue() {
-        Radio station = new Radio();
-        station.setButtonNextStation(-8);
-        int actual = station.getCurrentStation();
-        int expected = 0;
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void ButtonNextStationMinStation() {
-        Radio station = new Radio();
-        station.setButtonNextStation(0);
+        station.setManualInstalationStation(0);
+        station.buttonNextStation();
         int actual = station.getCurrentStation();
         int expected = 1;
         assertEquals(expected, actual);
     }
 
     @Test
-    void ButtonNextStationMaxStation() {
+    void buttonNextStationMaxStation() {
         Radio station = new Radio();
-        station.setButtonNextStation(9);
+        station.setManualInstalationStation(9);
+        station.buttonNextStation();
         int actual = station.getCurrentStation();
         int expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void setButtonPrevStation() {
+    void buttonPrevStation() {
         Radio station = new Radio();
-        int currentStation = 7;
-        station.setButtonPrevStation(currentStation);
+        station.setManualInstalationStation(5);
+        station.buttonPrevStation();
         int actual = station.getCurrentStation();
-        int expected = 6;
+        int expected = 4;
         assertEquals(expected, actual);
     }
 
     @Test
-    void setButtonPrevStationValueAboveTheMaximum() {
+    void buttonPrevStationMinStation() {
         Radio station = new Radio();
-        int currentStation = 12;
-        station.setButtonPrevStation(currentStation);
-        int actual = station.getCurrentStation();
-        int expected = 9;
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void setButtonPrevStationNegativeValue() {
-        Radio station = new Radio();
-        int currentStation = -2;
-        station.setButtonPrevStation(currentStation);
-        int actual = station.currentStation;
-        int expected = 9;
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void setButtonPrevStationMinStation() {
-        Radio station = new Radio();
-        int currentStation = 0;
-        station.setButtonPrevStation(currentStation);
+        station.setManualInstalationStation(0);
+        station.buttonPrevStation();
         int actual = station.getCurrentStation();
         int expected = 9;
         assertEquals(expected, actual);
     }
 
     @Test
-    void setButtonPrevStationMaxStation() {
+    void buttonPrevStationMaxStation() {
         Radio station = new Radio();
-        int currentStation = 9;
-        station.setButtonPrevStation(currentStation);
+        station.setManualInstalationStation(9);
+        station.buttonPrevStation();
         int actual = station.getCurrentStation();
         int expected = 8;
         assertEquals(expected, actual);
     }
 
     @Test
-    void setButtonIncreaseTheVolume() {
+    void setManualInstalationVolume() {
         Radio volume = new Radio();
-        int currentVolume = 1;
-        volume.setButtonIncreaseTheVolume(currentVolume);
+        volume.setManualInstalationVolume(2);
         int actual = volume.getCurrentVolume();
         int expected = 2;
         assertEquals(expected, actual);
     }
 
     @Test
-    void setButtonIncreaseTheVolumeValueAboveTheMaximum() {
+    void setManualInstalationVolumeValueAboveTheMaximum() {
         Radio volume = new Radio();
-        int currentVolume = 12;
-        volume.setButtonIncreaseTheVolume(currentVolume);
+        volume.setManualInstalationVolume(11);
         int actual = volume.getCurrentVolume();
         int expected = 10;
         assertEquals(expected, actual);
     }
 
     @Test
-    void setButtonIncreaseTheVolumeNegativeValue() {
+    void setManualInstalationVolumeNegativeValue() {
         Radio volume = new Radio();
-        int currentVolume = -3;
-        volume.setButtonIncreaseTheVolume(currentVolume);
+        volume.setManualInstalationVolume(-2);
         int actual = volume.getCurrentVolume();
         int expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void setButtonIncreaseTheVolumeMinVolume() {
+    void setManualInstalationVolumeMinStation() {
         Radio volume = new Radio();
-        int currentVolume = 0;
-        volume.setButtonIncreaseTheVolume(currentVolume);
+        volume.setManualInstalationVolume(0);
+        int actual = volume.getCurrentVolume();
+        int expected = 0;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void setManualInstalationVolumeMaxStation() {
+        Radio volume = new Radio();
+        volume.setManualInstalationVolume(10);
+        int actual = volume.getCurrentVolume();
+        int expected = 10;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void buttonIncreaseTheVolume() {
+        Radio volume = new Radio();
+        volume.setManualInstalationVolume(5);
+        volume.buttonIncreaseTheVolume();
+        int actual = volume.getCurrentVolume();
+        int expected = 6;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void buttonIncreaseTheVolumeValueAboveTheMaximum() {
+        Radio volume = new Radio();
+        volume.setManualInstalationVolume(12);
+        volume.buttonIncreaseTheVolume();
+        int actual = volume.getCurrentVolume();
+        int expected = 10;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void buttonIncreaseTheVolumeNegativeValue() {
+        Radio volume = new Radio();
+        volume.setManualInstalationVolume(-5);
+        volume.buttonIncreaseTheVolume();
         int actual = volume.getCurrentVolume();
         int expected = 1;
         assertEquals(expected, actual);
     }
 
     @Test
-    void setButtonIncreaseTheVolumeMaxVolume() {
+    void buttonIncreaseTheVolumeMinVolume() {
         Radio volume = new Radio();
-        int currentVolume = 10;
-        volume.setButtonIncreaseTheVolume(currentVolume);
+        volume.setManualInstalationVolume(0);
+        volume.buttonIncreaseTheVolume();
+        int actual = volume.getCurrentVolume();
+        int expected = 1;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void buttonIncreaseTheVolumeMaxVolume() {
+        Radio volume = new Radio();
+        volume.setManualInstalationVolume(10);
+        volume.buttonIncreaseTheVolume();
         int actual = volume.getCurrentVolume();
         int expected = 10;
         assertEquals(expected, actual);
     }
 
     @Test
-    void setButtonLowerTheVolume() {
+    void buttonLowerTheVolume() {
         Radio volume = new Radio();
-        int currentVolume = 9;
-        volume.setButtonLowerTheVolume(currentVolume);
+        volume.setManualInstalationVolume(5);
+        volume.buttonLowerTheVolume();
         int actual = volume.getCurrentVolume();
-        int expected = 8;
+        int expected = 4;
         assertEquals(expected, actual);
     }
 
     @Test
-    void setButtonLowerTheVolumeValueAboveTheMaximum() {
+    void buttonLowerTheVolumeValueAboveTheMaximum() {
         Radio volume = new Radio();
-        int currentVolume = 15;
-        volume.setButtonLowerTheVolume(currentVolume);
+        volume.setManualInstalationVolume(12);
+        volume.buttonLowerTheVolume();
         int actual = volume.getCurrentVolume();
-        int expected = 10;
+        int expected = 9;
         assertEquals(expected, actual);
     }
 
     @Test
-    void setButtonLowerTheVolumeNegativeValue() {
+    void buttonLowerTheVolumeNegativeValue() {
         Radio volume = new Radio();
-        int currentVolume = -4;
-        volume.setButtonLowerTheVolume(currentVolume);
-        int actual = volume.getCurrentVolume();
-        int expected = 0;
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void setButtonLowerTheVolumeMinVolume() {
-        Radio volume = new Radio();
-        int currentVolume = 0;
-        volume.setButtonLowerTheVolume(currentVolume);
+        volume.setManualInstalationVolume(-2);
+        volume.buttonLowerTheVolume();
         int actual = volume.getCurrentVolume();
         int expected = 0;
         assertEquals(expected, actual);
     }
 
     @Test
-    void setButtonLowerTheVolumeMaxVolume() {
+    void buttonLowerTheVolumeMinVolume() {
         Radio volume = new Radio();
-        int currentVolume = 10;
-        volume.setButtonLowerTheVolume(currentVolume);
+        volume.setManualInstalationVolume(0);
+        volume.buttonLowerTheVolume();
+        int actual = volume.getCurrentVolume();
+        int expected = 0;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void buttonLowerTheVolumeMaxVolume() {
+        Radio volume = new Radio();
+        volume.setManualInstalationVolume(10);
+        volume.buttonLowerTheVolume();
         int actual = volume.getCurrentVolume();
         int expected = 9;
         assertEquals(expected, actual);
